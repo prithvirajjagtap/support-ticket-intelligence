@@ -1,0 +1,15 @@
+Priority evaluation
+Test samples: 3268
+Accuracy: 0.7121
+Macro F1: 0.7040
+Weighted F1: 0.7115
+
+              precision    recall  f1-score   support
+
+        High       0.73      0.73      0.73      1275
+         Low       0.69      0.63      0.66       690
+      Medium       0.70      0.73      0.72      1303
+
+    accuracy                           0.71      3268
+   macro avg       0.71      0.70      0.70      3268
+weighted avg       0.71      0.71      0.71      3268

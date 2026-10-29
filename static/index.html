@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupportIQ | Ticket Intelligence</title>
+    <style>
+        :root {
+            --bg: #0b1020;
+            --panel: #131b2e;
+            --border: #27334c;
+            --text: #edf2ff;
+            --muted: #9aa9c5;
+            --accent: #7c8cff;
+            --green: #45d6a0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 22px 7%;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            font-size: 21px;
+            font-weight: 750;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .status {
+            color: var(--green);
+            font-size: 13px;
+        }
+
+        main {
+            width: min(1120px, 90%);
+            margin: 42px auto;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: clamp(30px, 5vw, 46px);
+            margin: 12px 0;
+        }
+
+        .intro {
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 680px;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 22px;
+            margin-top: 30px;
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 25px;
+            min-width: 0;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin: 0 0 9px;
+        }
+
+        .sub {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            margin: 22px 0 9px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 155px;
+            resize: vertical;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #0c1426;
+            color: var(--text);
+            padding: 14px;
+            font: inherit;
+            line-height: 1.6;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: var(--accent);
+        }
+
+        button {
+            width: 100%;
+            border: 0;
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 14px;
+            color: white;
+            background: var(--accent);
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        .message {
+            margin-top: 13px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .error {
+            color: #ff9eaa;
+        }
+
+        .empty {
+            min-height: 245px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .empty-icon {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        .result {
+            display: none;
+        }
+
+        .result-label {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 22px;
+        }
+
+        .result-value {
+            font-size: 21px;
+            font-weight: 700;
+            margin-top: 7px;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 6px 10px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .history {
+            margin-top: 22px;
+        }
+
+        .ticket {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ticket:last-child {
+            border-bottom: 0;
+        }
+
+        .ticket-text {
+            overflow-wrap: anywhere;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .ticket-meta {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        @media (max-width: 760px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            main {
+                width: 92%;
+                margin-top: 30px;
+            }
+
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .panel {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand">Support<span>IQ</span></div>
+        <div class="status">● ML API</div>
+    </header>
+
+    <main>
+        <div class="eyebrow">AI-powered support workflow</div>
+        <h1>Understand every<br>support ticket.</h1>
+        <p class="intro">
+            Classify customer complaints with a machine learning model,
+            estimate priority, and keep a record of every prediction.
+        </p>
+
+        <div class="layout">
+            <section class="panel">
+                <h2>Analyze a ticket</h2>
+                <p class="sub">Describe the customer's problem in plain English.</p>
+
+                <form id="ticket-form">
+                    <label for="ticket-text">Customer complaint</label>
+                    <textarea id="ticket-text" minlength="5" maxlength="2000" required
+                        placeholder="Example: I was charged twice for my order and need help..."></textarea>
+                    <button id="submit-btn" type="submit">Analyze ticket →</button>
+                    <div id="message" class="message" role="status"></div>
+                </form>
+            </section>
+
+            <section class="panel">
+                <h2>Prediction results</h2>
+                <p class="sub">The model's output will appear here.</p>
+
+                <div id="empty-state" class="empty">
+                    <div>
+                        <div class="empty-icon">⌁</div>
+                        Submit a complaint to see its<br>predicted category and priority.
+                    </div>
+                </div>
+
+                <div id="result" class="result">
+                    <div class="result-label">PREDICTED CATEGORY</div>
+                    <div id="category" class="result-value"></div>
+
+                    <div class="result-label">ESTIMATED PRIORITY</div>
+                    <div id="priority" class="result-value"></div>
+
+                    <div class="result-label">TICKET REFERENCE</div>
+                    <div id="ticket-id" class="result-value"></div>
+
+                    <p class="sub">
+
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <section class="panel history">
+            <h2>Recent tickets</h2>
+            <p class="sub">Previously submitted predictions stored in the database.</p>
+            <div id="history-list" class="sub">Loading tickets...</div>
+            <button id="refresh-btn" type="button">Refresh ticket history</button>
+        </section>
+    </main>
+
+    <footer>SupportIQ · Machine Learning Demonstration</footer>
+
+    <script>
+        const form = document.getElementById("ticket-form");
+        const input = document.getElementById("ticket-text");
+        const button = document.getElementById("submit-btn");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const ticketText = input.value.trim();
+            if (ticketText.length < 5) {
+                message.textContent = "Please enter a longer complaint.";
+                message.className = "message error";
+                return;
+            }
+
+            button.disabled = true;
+            button.textContent = "Analyzing...";
+            message.textContent = "Sending ticket to the ML backend...";
+            message.className = "message";
+
+            try {
+                const response = await fetch("/api/predict", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ ticket_text: ticketText })
+                });
+
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data.detail || "Prediction failed.");
+                }
+
+                document.getElementById("category").textContent =
+                    data.predicted_category;
+                document.getElementById("priority").textContent =
+                    data.predicted_priority;
+                document.getElementById("ticket-id").textContent =
+                    "#" + data.ticket_id;
+
+                document.getElementById("empty-state").style.display = "none";
+                document.getElementById("result").style.display = "block";
+
+                message.textContent = "Ticket analyzed and saved successfully.";
+                message.className = "message";
+                await loadHistory();
+            } catch (error) {
+                message.textContent = error.message ||
+                    "Could not connect to the backend.";
+                message.className = "message error";
+            } finally {
+                button.disabled = false;
+                button.textContent = "Analyze ticket →";
+            }
+        });
+
+        async function loadHistory() {
+            const container = document.getElementById("history-list");
+            try {
+                const response = await fetch("/api/tickets");
+                if (!response.ok) throw new Error("Could not load ticket history.");
+
+                const tickets = await response.json();
+                container.replaceChildren();
+
+                if (tickets.length === 0) {
+                    container.textContent = "No tickets submitted yet.";
+                    return;
+                }
+
+                tickets.slice(0, 10).forEach((ticket) => {
+                    const item = document.createElement("div");
+                    item.className = "ticket";
+
+                    const text = document.createElement("div");
+                    text.className = "ticket-text";
+                    text.textContent = ticket.ticket_text;
+
+                    const meta = document.createElement("div");
+                    meta.className = "ticket-meta";
+                    meta.textContent =
+                        "#" + ticket.id + " · " +
+                        ticket.predicted_category + " · " +
+                        ticket.predicted_priority + " · " +
+                        ticket.created_at;
+
+                    item.append(text, meta);
+                    container.appendChild(item);
+                });
+            } catch (error) {
+                container.textContent = error.message;
+            }
+        }
+
+        document.getElementById("refresh-btn").addEventListener(
+            "click", loadHistory
+        );
+
+        loadHistory();
+    </script>
+</body>
+
+</html>

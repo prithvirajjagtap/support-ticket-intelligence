@@ -1,0 +1,3 @@
+task,test_samples,accuracy,macro_f1,weighted_f1,report_file,confusion_matrix
+Category,3268,0.6826805385556916,0.6981741376522305,0.6826077157742053,C:\Users\aj595\OneDrive\Desktop\Support_Ticket_Intelligence\models\evaluation\category_report.txt,C:\Users\aj595\OneDrive\Desktop\Support_Ticket_Intelligence\models\evaluation\category_confusion_matrix.png
+Priority,3268,0.7120563035495716,0.7040160659130917,0.7115426464692063,C:\Users\aj595\OneDrive\Desktop\Support_Ticket_Intelligence\models\evaluation\priority_report.txt,C:\Users\aj595\OneDrive\Desktop\Support_Ticket_Intelligence\models\evaluation\priority_confusion_matrix.png

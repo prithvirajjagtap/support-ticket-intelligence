@@ -1,0 +1,22 @@
+Category evaluation
+Test samples: 3268
+Accuracy: 0.6827
+Macro F1: 0.6982
+Weighted F1: 0.6826
+
+                                 precision    recall  f1-score   support
+
+           Billing and Payments       0.85      0.87      0.86       319
+               Customer Service       0.63      0.64      0.63       482
+                General Inquiry       0.84      0.66      0.74        47
+                Human Resources       0.79      0.70      0.74        70
+                     IT Support       0.60      0.61      0.60       388
+                Product Support       0.65      0.63      0.64       615
+          Returns and Exchanges       0.71      0.64      0.68       164
+            Sales and Pre-Sales       0.57      0.70      0.63       103
+Service Outages and Maintenance       0.72      0.83      0.77       133
+              Technical Support       0.70      0.69      0.70       947
+
+                       accuracy                           0.68      3268
+                      macro avg       0.71      0.70      0.70      3268
+                   weighted avg       0.68      0.68      0.68      3268
