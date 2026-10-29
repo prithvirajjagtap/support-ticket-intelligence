@@ -1,0 +1,14 @@
+
+venv/
+__pycache__/
+*.py[cod]
+.env
+.pytest_cache/
+
+# Local datasets and backups
+data/support_tickets_raw.csv
+data/tickets_backup.csv
+data/ticket.csv
+
+# Local ticket history database
+tickets.db
